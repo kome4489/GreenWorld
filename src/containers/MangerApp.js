@@ -1,14 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
-import SvgIcon from 'material-ui/SvgIcon';
+import Paper from 'material-ui/Paper';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+
+const style = {
+  display: 'inline-block',
+  margin: '16px 32px 16px 0',
+};
 
 const MangerApp = ({ store }) => (
   <Provider store={store}>
     <div>
-      <SvgIcon>
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-      </SvgIcon>
+      <Paper style={style}>
+        <Menu>
+          <MenuItem primaryText="Maps" />
+          <MenuItem primaryText="Books" />
+          <MenuItem primaryText="Flights" />
+          <MenuItem primaryText="Apps" />
+        </Menu>
+      </Paper>
     </div>
   </Provider>
 )
