@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton';
 import * as actions from '../actions/app';
 import Face from './Face'
+import Login from './Login'
 
 class MangerApp extends Component{
   constructor(props) {
@@ -24,13 +25,13 @@ class MangerApp extends Component{
     this.props.actions.switchScreen(3, 4);
   }
 
-  render() {
+  render() {  
     // const style = {
     //   display: 'inline-block',
     //   margin: '0px 0px 16px 0',
     // };
     return (
-        <div>
+        <div className="container">
           aaaaaaaaaaaa
           <div>
             <RaisedButton
@@ -42,6 +43,9 @@ class MangerApp extends Component{
           </div>
           <div>
             <Face />
+          </div>
+          <div>
+            <Login />
           </div>
         </div>
     );

@@ -1,9 +1,13 @@
 import { handleActions } from 'redux-actions'
-import { SWITCH } from '../constans/ActionTypes'
+import { SWITCH, ONCHANGE } from '../constans/ActionTypes'
 
 const initialState = {
   aaa: 1,
   bbb: 2,
+  login: {
+    id: null,
+    pass: null,
+  }
 }
 
 const app = handleActions({
@@ -14,6 +18,24 @@ const app = handleActions({
       aaa: action.payload.aaa,
       bbb: action.payload.bbb,
   })
+  },
+  [ONCHANGE]: (state, action) => {
+    console.log(action)
+    switch(action.payload.type) {
+      case 'id':
+        Object.assign({}, state.login, {
+          id: action.payload.value,
+        })
+        break;
+      case 'pass':
+      Object.assign({}, state.login, {
+        pass: action.payload.value,
+      })
+        break;
+      default:
+        break;
+    }
+    return state;
   },
 }, initialState);
 

@@ -1,3 +1,3 @@
-import { createAction } from 'redux-actions' 
 
-export const SWITCH = createAction('SWITCH');
+export const SWITCH = 'SWITCH';
+export const ONCHANGE = 'ONCHANGE';
