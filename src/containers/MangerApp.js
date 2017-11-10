@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 // import Paper from 'material-ui/Paper';
 // import Menu from 'material-ui/Menu';
 // import MenuItem from 'material-ui/MenuItem';
-// import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 import * as actions from '../actions/app';
 import Face from './Face'
 
@@ -15,16 +15,14 @@ class MangerApp extends Component{
     this.state = {
       aaa: null,
     }
-    this.props.actions.switchScreen(3, 4);
+    this.handleOnClick = this.handleOnClick.bind(this);
   }
   //   this.handleOnClick = this.handleOnClick.bind(this);
   // }
 
-  // handleOnClick(item) {
-  //   this.setState({
-  //     aaa: item,
-  //   });
-  // }
+  handleOnClick() {
+    this.props.actions.switchScreen(3, 4);
+  }
 
   render() {
     // const style = {
@@ -34,6 +32,14 @@ class MangerApp extends Component{
     return (
         <div>
           aaaaaaaaaaaa
+          <div>
+            <RaisedButton
+              label={'button'}
+              onClick={this.handleOnClick}
+            >
+              aaaaaaaaaaaa
+            </RaisedButton>
+          </div>
           <div>
             <Face />
           </div>

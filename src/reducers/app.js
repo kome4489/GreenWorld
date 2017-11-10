@@ -1,4 +1,4 @@
-import { handleAction } from 'redux-actions'
+import { handleActions } from 'redux-actions'
 import { SWITCH } from '../constans/ActionTypes'
 
 const initialState = {
@@ -6,12 +6,15 @@ const initialState = {
   bbb: 2,
 }
 
-const app = handleAction({}, Object.assign({}, {
-  [SWITCH]: (state, action) => ({
-    aaa: action.payload.aaa,
-    bbb: action.payload.bbb,
+const app = handleActions({
+  [SWITCH]: (state, action) => {
+    console.log(state);
+    console.log(action);
+    return Object.assign({}, state, {
+      aaa: action.payload.aaa,
+      bbb: action.payload.bbb,
   })
-  }
-), initialState);
+  },
+}, initialState);
 
 export default app;
