@@ -7,8 +7,9 @@ import { connect } from 'react-redux'
 // import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import * as actions from '../actions/app';
-import Face from './Face'
-import Login from './Login'
+// import Face from './Face'
+// import Login from './Login'
+import Info from './Info'
 
 class MangerApp extends Component{
   constructor(props) {
@@ -41,11 +42,14 @@ class MangerApp extends Component{
               aaaaaaaaaaaa
             </RaisedButton>
           </div>
-          <div>
+          {/* <div>
             <Face />
           </div>
           <div>
             <Login />
+          </div> */}
+          <div>
+            <Info />
           </div>
         </div>
     );
