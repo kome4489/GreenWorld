@@ -23,13 +23,13 @@ const app = handleActions({
     console.log(action)
     switch(action.payload.type) {
       case 'id':
-        Object.assign({}, state.login, {
+        state.login = Object.assign({}, state.login, {
           id: action.payload.value,
         })
         break;
       case 'pass':
-      Object.assign({}, state.login, {
-        pass: action.payload.value,
+        state.login = Object.assign({}, state.login, {
+          pass: action.payload.value,
       })
         break;
       default:

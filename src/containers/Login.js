@@ -32,7 +32,7 @@ class Login extends Component{
         id="id"
         type="id"
         hintText={'id'}
-        value={this.state.value}
+        value={this.props.id}
         onChange={this.handleOnChange}
       />
       </div>);
@@ -41,7 +41,7 @@ class Login extends Component{
         id="pass"
         type="pass"
         hintText={'password'}
-        value={this.state.value}
+        value={this.props.pass}
         onChange={this.handleOnChange}
       />
     </div>);
@@ -72,12 +72,16 @@ Login.propTypes = {
   aaa: PropTypes.number,
   bbb: PropTypes.number,
   action: PropTypes.fun,
+  id: PropTypes.string,
+  pass: PropTypes.string,
 }
 
 function mapStateToProps(state) {
   return {
     aaa: state.app.aaa,
     bbb: state.app.bbb,
+    id: state.app.login.id,
+    pass: state.app.login.pass,
   }
 }
 
