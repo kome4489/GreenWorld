@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { browserHistory } from 'react-router'
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -12,11 +13,23 @@ class Login extends Component{
     super(props);
     this.state = {
       aaa: null,
+      userCheck: false,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
+  }
+  componentDidUpdate() {
+    if (this.state.userCheck) {
+      browserHistory.push('/home');
+    }
   }
   handleOnChange(event) {
     this.props.actions.onChange(event.target.id, event.target.value);
+  }
+  handleOnClick() {
+    this.setState({
+      userCheck: true,
+    });
   }
   render() {
     const style = {
@@ -52,6 +65,8 @@ class Login extends Component{
       />
       </div>
     );
+    console.log(this.props.aaa);
+    console.log(this.props.bbb);
     
     return (
       <div>
@@ -61,8 +76,6 @@ class Login extends Component{
         style={style}
         zDepth={1}
       />
-      {this.props.aaa}
-      {this.props.bbb}
       </div>
     );
   }

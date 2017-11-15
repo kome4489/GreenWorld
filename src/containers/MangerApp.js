@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-// import Paper from 'material-ui/Paper';
-// import Menu from 'material-ui/Menu';
-// import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+// import RaisedButton from 'material-ui/RaisedButton';
 import * as actions from '../actions/app';
 // import Face from './Face'
 // import Login from './Login'
-import Info from './Info'
+import Info from './Manage/Info'
 
 class MangerApp extends Component{
   constructor(props) {
@@ -27,29 +27,24 @@ class MangerApp extends Component{
   }
 
   render() {  
-    // const style = {
-    //   display: 'inline-block',
-    //   margin: '0px 0px 16px 0',
-    // };
+    const style = {
+      display: 'inline-block',
+      margin: '0px 0px 16px 0',
+    };
     return (
         <div className="container">
-          aaaaaaaaaaaa
           <div>
-            <RaisedButton
-              label={'button'}
-              onClick={this.handleOnClick}
-            >
-              aaaaaaaaaaaa
-            </RaisedButton>
-          </div>
-          {/* <div>
-            <Face />
-          </div>
-          <div>
-            <Login />
-          </div> */}
-          <div>
-            <Info />
+            <Paper style={style}>
+              <Menu>
+                <MenuItem primaryText="Maps" />
+                <MenuItem primaryText="Books" />
+                <MenuItem primaryText="Flights" />
+                <MenuItem primaryText="Apps" />
+              </Menu>
+            </Paper>
+            <Paper style={style}>
+              <Info />
+            </Paper>
           </div>
         </div>
     );
