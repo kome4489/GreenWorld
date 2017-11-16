@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { browserHistory } from 'react-router'
-import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import * as actions from '../actions/app';
+import * as css from '../styles/app.css';
 
 class Login extends Component{
   constructor(props) {
@@ -32,13 +32,6 @@ class Login extends Component{
     });
   }
   render() {
-    const style = {
-      height: 500,
-      width: 600,
-      margin: 20,
-      textAlign: 'center',
-      display: 'inline-block',
-    };
     const showItem = [];
     showItem.push(<div>
       <TextField
@@ -69,13 +62,14 @@ class Login extends Component{
     console.log(this.props.bbb);
     
     return (
-      <div>
-      <Paper
-        key="login"
-        children={showItem}
-        style={style}
-        zDepth={1}
-      />
+      <div className={css.login}>
+        <div className={css.loginTriangle}></div>
+        <h2 className={css.loginHeader}>Log in</h2>
+        <form className="login-container">
+          <p><input type="email" placeholder="Email" /></p>
+          <p><input type="password" placeholder="Password" /></p>
+          <p><input type="submit" value="Log in" /></p>
+        </form>
       </div>
     );
   }
