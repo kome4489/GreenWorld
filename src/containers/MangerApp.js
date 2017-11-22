@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Paper from 'material-ui/Paper';
+// import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 // import RaisedButton from 'material-ui/RaisedButton';
@@ -34,17 +34,23 @@ class MangerApp extends Component{
     return (
         <div className="container">
           <div>
-            <Paper style={style}>
-              <Menu>
+            <div style={{
+              background: 'white'
+            }}>
+              <Menu
+                style={{
+                  height: '500px'
+                }}
+              >
                 <MenuItem primaryText="Maps" />
                 <MenuItem primaryText="Books" />
                 <MenuItem primaryText="Flights" />
                 <MenuItem primaryText="Apps" />
               </Menu>
-            </Paper>
-            <Paper style={style}>
+            </div>
+            <div style={style}>
               <Info />
-            </Paper>
+            </div>
           </div>
         </div>
     );

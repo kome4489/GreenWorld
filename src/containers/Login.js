@@ -60,16 +60,28 @@ class Login extends Component{
     );
     console.log(this.props.aaa);
     console.log(this.props.bbb);
-    
+
     return (
-      <div className={css.login}>
+      <div style={{ textAlign: "center" }}>
         <div className={css.loginTriangle}></div>
         <h2 className={css.loginHeader}>Log in</h2>
-        <form className="login-container">
-          <p><input type="email" placeholder="Email" /></p>
-          <p><input type="password" placeholder="Password" /></p>
-          <p><input type="submit" value="Log in" /></p>
-        </form>
+        <div>
+          <TextField
+            hintText="email"
+            inputStyle={{
+              color: 'white'
+            }}
+          />
+          <br />
+          <TextField
+            hintText="password"
+            inputStyle={{
+              color: 'white'
+            }}
+          />
+          <br />
+          <RaisedButton label="Login in" style={{ margin: 12 }} />
+        </div>
       </div>
     );
   }
