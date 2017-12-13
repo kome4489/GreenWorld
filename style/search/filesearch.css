@@ -1,0 +1,28 @@
+.container {
+  padding: 10px 20px;
+}
+
+.box {
+  display: flex;
+}
+
+.condition {
+  width: 80%;
+}
+
+.button {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin: 0px 8px 8px 0px;
+}
+
+.faqkind {
+  font-size: inherit;
+}
+
+.menuitem {
+  font-size: inherit;
+}

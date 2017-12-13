@@ -1,0 +1,62 @@
+.container {
+  padding: 10px 20px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.release {
+  display: flex;
+}
+
+.radiogroup {
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 16px;
+}
+
+.leftItem {
+  flex-grow: 1;
+}
+
+.calendar {
+  flex-grow: 1;
+  margin-left: 12px;
+}
+
+.comment {
+  width: 100% !important;
+  font-size: inherit !important;
+}
+/*
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+}
+
+.topRadio {
+  margin-top: 18px;
+}*/
+
+/*.bottomRadio {
+  margin-top: 48px;
+}*/

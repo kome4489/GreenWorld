@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+/* 機能毎の親コンポーネントに当てるスタイル */
+.container {
+  padding: 10px 20px;
+}
+
+/* ベースコンポーネント */
+.wrapper {
+  display: flex;
+  flex: 1;
+}
+
+.left {
+  flex: 2;
+  padding-right: 10px;
+}
+.right {
+  flex: 1;
+  padding-left: 10px;
+}
+
+/* ボタン */
+
+.button {
+  margin: 0px 5px;
+}
+
+#conditionsText {
+}
+
+.searchInputConditions {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  width: 1000px;
+  border: 1px solid #000;
+  padding: 15px;
+  z-index: 1000;
+  height: 500px;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+/* 種別選択 */
+.condition {
+  display: flex;
+}
+
+/* メニューバー */
+.menubar {
+  display: flex;
+}
+
+.menubarLabel {
+  flex: 1;
+}
+
+.menubarFunction {
+  flex: 1;
+  text-align: right; 
+}
+
+/* フィルター機能 */
+.contextFilterMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 220px;
+}
+
+.contextLabel {
+  font-size: 11px;
+  padding: 0 5px;
+}
+
+.contextItemChoice {
+  height: 100px;
+  margin: 5px;
+  /* border: 1px solid #000; */
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+/* 検索フィルター */
+.searchFilter {
+  position: relative;
+}
+
+.searchFilterBody {
+  padding: 15px;
+}
+
+.searchFilterRow {
+  display: flex;
+}
+
+.searchFilterRowLabel {
+  flex: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.searchFilterRowField {
+  flex: 2;
+}
+
+.searchFilterAction {
+  flex: 1;
+  white-space: 1em;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+/* EditorScreen */
+.editorRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-size: 14px;
+}
+
+.editorRowLeft {
+  flex: 1;
+  overflow: hidden;
+  justify-content: flex-end;
+  text-align: right;
+  margin-right: 2em;
+}
+
+.editorRowRight {
+  flex: 3;
+}
+
+.editorRowRightLabel {
+  height: 48px;
+  line-height: 2;
+}
