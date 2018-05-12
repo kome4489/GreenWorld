@@ -33,5 +33,5 @@
 }
 
 .menu {
-  display: inline-flex !important;
+  width: 100px;
 }

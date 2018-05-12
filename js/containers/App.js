@@ -14,8 +14,12 @@ class ManagerApp extends Component {
         break;
     }
     return (
-      <div style={{ display: 'table-caption' }}>
-        <div>
+      <div
+        style={{
+          display: 'block',
+        }}
+      >
+        <div >
           <Header />
         </div>
         <div>
