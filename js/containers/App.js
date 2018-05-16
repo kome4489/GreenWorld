@@ -1,18 +1,9 @@
-import React, { PropTypes, Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import Header from './Header';
 import Body from './Body';
 
 class ManagerApp extends Component {
   render() {
-    let body = null;
-    switch (this.props.switchValue) {
-      case 2:
-        body = <Body />;
-        break;
-      default:
-        break;
-    }
     return (
       <div
         style={{
@@ -23,28 +14,11 @@ class ManagerApp extends Component {
           <Header />
         </div>
         <div>
-          {body}
+          <Body />
         </div>
       </div>
     );
   }
 }
 
-ManagerApp.defaultProps = {
-  switchValue: 1,
-};
-
-ManagerApp.propTypes = {
-  switchValue: PropTypes.number,
-};
-
-function mapStateToProps(state) {
-  return {
-    switchValue: state.app.switchValue,
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  null,
-)(ManagerApp);
+export default ManagerApp;

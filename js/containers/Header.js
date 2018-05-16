@@ -21,27 +21,54 @@ class Header extends Component {
 
     this.state = {
       menuDisplay: false,
+      titleLabel: '会話',
     };
 
-    this.handleOnSwitch = this.handleOnSwitch.bind(this);
-    // this.handleOnClickNavi = this.handleOnClickNavi.bind(this);
-  }
-  handleOnSwitch(index) {
-    this.props.actions.onSwitch(index);
+    this.handleOnCloseClick = this.handleOnCloseClick.bind(this);
   }
 
-  // handleOnClickNavi() {
-  //   const menuDisplay = this.state.menuDisplay;
-  //   this.setState({
-  //     menuDisplay: !menuDisplay,
-  //   });
-  // }
+  handleOnSwitch(index) {
+    this.props.actions.onSwitch(index);
+    let titleLabel;
+    switch (index) {
+      case 1:
+        titleLabel = '会話';
+        break;
+      case 2:
+        titleLabel = '植物検索';
+        break;
+      case 3:
+        titleLabel = '植物登録';
+        break;
+      case 4:
+        titleLabel = 'みんなの写真';
+        break;
+      case 5:
+        titleLabel = 'お問い合わせ';
+        break;
+      default:
+        break;
+    }
+
+    this.setState({
+      titleLabel,
+    });
+  }
+
+  handleOnCloseClick(index) {
+    console.log(this);
+    window.close();
+  }
 
   render() {
     const AppsMenu = (
       <IconMenu
         iconButtonElement={
-          <IconButton><NavigationApps /></IconButton>
+          <IconButton>
+            <NavigationApps
+              color={'white'}
+            />
+          </IconButton>
         }
         targetOrigin={{
           horizontal: 'right',
@@ -52,20 +79,28 @@ class Header extends Component {
           vertical: 'top',
         }}
       >
-        <MenuItem onClick={() => this.handleOnSwitch(1)} primaryText="Maps" />
-        <MenuItem onClick={() => this.handleOnSwitch(2)} primaryText="Books" />
-        <MenuItem onClick={() => this.handleOnSwitch(3)} primaryText="Flights" />
-        <MenuItem onClick={() => this.handleOnSwitch(4)} primaryText="Apps" />
+        <MenuItem onClick={() => this.handleOnSwitch(1)} primaryText="会話" />
+        <MenuItem onClick={() => this.handleOnSwitch(2)} primaryText="植物検索" />
+        <MenuItem onClick={() => this.handleOnSwitch(3)} primaryText="植物登録" />
+        <MenuItem onClick={() => this.handleOnSwitch(4)} primaryText="みんなの写真" />
+        <MenuItem onClick={() => this.handleOnSwitch(5)} primaryText="お問い合わせ" />
       </IconMenu>
     );
 
     return (
       <div>
         <AppBar
-          title="Title"
-          iconElementRight={<IconButton><NavigationClose /></IconButton>}
+          title={this.state.titleLabel}
+          iconElementRight={
+            <IconButton>
+              <NavigationClose
+                color={'white'}
+              />
+            </IconButton>
+          }
           iconElementLeft={AppsMenu}
-          onLeftIconButtonClick={this.handleOnClickNavi}
+          // onLeftIconButtonClick={this.handleOnMenuClick}
+          onRightIconButtonClick={this.handleOnCloseClick}
         />
       </div>
     );
