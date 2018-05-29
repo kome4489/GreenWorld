@@ -1,8 +1,11 @@
 import { handleActions } from 'redux-actions';
-import { DATAS_SUCESS, SAVE_CHANGE, SWITCH, ON_CHANGE } from '../constants/ActionTypes';
+import { DATAS_SUCESS, SAVE_CHANGE, SWITCH, ON_CHANGE, QUERY_SUCCESS, CURD_SUCCESS } from '../constants/ActionTypes';
 
 const initialState = {
   aaa: null,
+  results: {
+    datas: [],
+  },
 };
 
 const query = handleActions({
@@ -46,6 +49,25 @@ const query = handleActions({
   [SWITCH]: (state, action) => Object.assign({}, state, {
     switchValue: action.payload.value,
   }),
+
+  [QUERY_SUCCESS]: (state, action) => {
+    const datas = action.payload.response.data;
+    return Object.assign({}, state, {
+      results: Object.assign({}, state.results, {
+        datas,
+      }),
+    });
+  },
+
+  [CURD_SUCCESS]: (state, action) => {
+    const messages = action.payload.response.message;
+    return Object.assign({}, state, {
+      results: Object.assign({}, state.results, {
+        messages,
+        message: '登録成功',
+      }),
+    });
+  },
 
 }, initialState);
 

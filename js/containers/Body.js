@@ -13,13 +13,13 @@ class Body extends Component {
 
     switch (this.props.switchValue) {
       case 1:
-        bodyItem = <Chat />;
-        break;
-      case 2:
         bodyItem = <GoodSearch />;
         break;
-      case 3:
+      case 2:
         bodyItem = <GoodCreate />;
+        break;
+      case 3:
+        bodyItem = <Chat />;
         break;
       // case 4:
       //   bodyItem = <GoodPhoto />;

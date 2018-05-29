@@ -1,18 +1,18 @@
 import { createAction } from 'redux-actions';
 import * as Types from '../constants/ActionTypes';
 
-export const goodSearch = createAction(Types.QUERY_API, (body, url, screenType) => ({
+export const goodSearch = createAction(Types.QUERY_API, (body, url, Methods) => ({
   types: [Types.QUERY_REQUEST, Types.QUERY_SUCCESS, Types.QUERY_FAILURE],
   url,
   body,
-  screenType,
+  Methods,
 }));
 
-export const goodCreate = createAction(Types.QUERY_API, (body, url, screenType) => ({
-  types: [Types.QUERY_REQUEST, Types.QUERY_SUCCESS, Types.QUERY_FAILURE],
+export const goodCreate = createAction(Types.QUERY_API, (body, url, Methods) => ({
+  types: [Types.QUERY_REQUEST, Types.CURD_SUCCESS, Types.QUERY_FAILURE],
   url,
   body,
-  screenType,
+  Methods,
 }));
 
 export const goodUpdate = createAction(Types.QUERY_API, (body, url, screenType) => ({

@@ -11,7 +11,7 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-import * as actions from '../../actions/app';
+// import { v1 as uuidv1 } from 'uuid';
 import * as queryActions from '../../actions/query';
 import css from '../../../style/body.css';
 
@@ -19,31 +19,10 @@ class GoodSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      input_1: '',
-      input_2: '',
-      datas: [
-        {
-          goodName: '菊',
-          familyName: '種類1',
-          formName: 'カテゴリ1',
-        },
-        {
-          goodName: '竹',
-          familyName: '種類2',
-          formName: 'カテゴリ2',
-        },
-        {
-          goodName: '梅',
-          familyName: '種類3',
-          formName: 'カテゴリ3',
-        },
-        {
-          goodName: '松',
-          familyName: '種類3',
-          formName: 'カテゴリ3',
-        },
-      ],
+      goodListItems: [],
+      datas: [],
     };
+
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnSearch = this.handleOnSearch.bind(this);
     this.createTableBodyRows = this.createTableBodyRows.bind(this);
@@ -55,20 +34,15 @@ class GoodSearch extends Component {
       this.setState({ formName: value });
     }
 
-    this.props.actions.onChange(value, type);
+    this.props.queryActions.onChange(value, type);
   }
   handleOnSearch() {
-    const body = {
-      familyName: this.state.familyName,
-      formName: this.state.formName,
-    };
-
-    const url = '';
-    this.props.queryActions.goodSearch(body, 1, url);
+    this.props.queryActions.goodSearch({}, 'https://us-central1-weather-e382e.cloudfunctions.net/searchDataTest', 'GET');
   }
+
   createTableBodyRows() {
     const tableRows = [];
-    this.state.datas.map((row, index) => {
+    this.props.datas.map((row, index) => {
       tableRows.push(<TableRow
         key={index}
       >
@@ -147,17 +121,18 @@ GoodSearch.defaultProps = {
 
 GoodSearch.propTypes = {
   primaryButton: PropTypes.boolean,
-  actions: PropTypes.objectOf(PropTypes.func),
   queryActions: PropTypes.objectOf(PropTypes.func),
+  datas: PropTypes.arrayOf(PropTypes.object),
 };
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    datas: state.query.results.datas,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch),
     queryActions: bindActionCreators(queryActions, dispatch),
   };
 }

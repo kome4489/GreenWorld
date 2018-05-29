@@ -3,41 +3,47 @@ import * as Types from '../constants/ActionTypes';
 const query = store => next => (action) => {
   if (action.type !== Types.QUERY_API) return next(action);
 
-  const { body, types, screenType, url } = action.payload;
+  const { body, types, Methods, url } = action.payload;
   const [requestType, successType, failureType] = types;
 
   next({
     type: requestType,
     payload: Object.assign({}, action.payload, {
       body,
-      screenType,
     }),
   });
 
-  return fetch(url, {
-    body,
+  const apiParams = {
+    method: Methods,
+    credentials: 'cors',
     headers: {
-      metchod: 'POST',
+      'Content-type': 'application/json; charset=utf-8',
     },
-  }).then(res => res.json().then(json => ({ res, json })))
-  .then((res, json) => {
-    if (res.status === '200') {
-      return next({
-        type: failureType,
-        payload: Object.assign({}, action.payload, {
+  };
+
+  if (Methods === 'POST') {
+    apiParams.body = JSON.stringify(body);
+  }
+
+  return fetch(url, apiParams)
+  .then((response) => {
+    console.log(response);
+    return response.json()
+    .then((res) => {
+      next({
+        type: successType,
+        payload: {
+          response: res,
           body,
-          screenType,
-          res,
-        }),
+        },
       });
-    }
-    return next({
-      type: successType,
-      payload: Object.assign({}, action.payload, {
-        body,
-        screenType,
-        res,
-      }),
+    });
+  }).catch((err) => {
+    next({
+      type: failureType,
+      payload: {
+        message: err,
+      },
     });
   });
 };
