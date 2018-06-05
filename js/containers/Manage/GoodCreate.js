@@ -13,6 +13,7 @@ class GoodCreate extends Component {
       goodName: '',
       familyName: '',
       formName: '',
+      path: '',
     };
 
     this.handleOnChange = this.handleOnChange.bind(this);
@@ -26,11 +27,12 @@ class GoodCreate extends Component {
 
   handleOnCreateGood() {
     const body = {
-      goodName: this.state.goodName,
-      familyName: this.state.familyName,
-      formName: this.state.formName,
+      name: this.state.goodName,
+      family: this.state.familyName,
+      form: this.state.formName,
+      path: this.state.path,
     };
-    this.props.queryActions.goodCreate(body, 'https://us-central1-weather-e382e.cloudfunctions.net/createDataTest', 'POST');
+    this.props.queryActions.goodCreate(body, 'http://www.silvereye.work/api/plant/add', 'POST');
   }
 
   render() {
@@ -58,6 +60,14 @@ class GoodCreate extends Component {
             floatingLabelText={'形態'}
             value={this.state.formName}
             onChange={(value, nextValue) => this.handleOnChange(nextValue, 'formName')}
+          />
+        </div>
+        <div>
+          <TextField
+            hintText={'path'}
+            floatingLabelText={'パス'}
+            value={this.state.path}
+            onChange={(value, nextValue) => this.handleOnChange(nextValue, 'path')}
           />
         </div>
         <div>

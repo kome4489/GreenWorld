@@ -51,7 +51,7 @@ const query = handleActions({
   }),
 
   [QUERY_SUCCESS]: (state, action) => {
-    const datas = action.payload.response.data;
+    const datas = action.payload.response.plantList;
     return Object.assign({}, state, {
       results: Object.assign({}, state.results, {
         datas,

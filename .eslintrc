@@ -29,7 +29,7 @@
         "no-undef": 1,
         "max-len": ["error", { "code": 160 }],
         "no-underscore-dangle": ["error", { "allow": ["_currentElement", "_reactInternalInstance"] }],
-        "linebreak-style": ["error", "unix"]
+        "linebreak-style": ["error", "windows"]
     },
     "globals": {
         "module": true,

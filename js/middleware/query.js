@@ -15,7 +15,8 @@ const query = store => next => (action) => {
 
   const apiParams = {
     method: Methods,
-    credentials: 'cors',
+    mode: 'cors',
+    credentials: 'include',
     headers: {
       'Content-type': 'application/json; charset=utf-8',
     },

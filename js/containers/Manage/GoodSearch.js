@@ -21,6 +21,7 @@ class GoodSearch extends Component {
     this.state = {
       goodListItems: [],
       datas: [],
+      name: '',
     };
 
     this.handleOnChange = this.handleOnChange.bind(this);
@@ -28,16 +29,15 @@ class GoodSearch extends Component {
     this.createTableBodyRows = this.createTableBodyRows.bind(this);
   }
   handleOnChange(value, type) {
-    if (type === 'familyName') {
-      this.setState({ familyName: value });
-    } else if (type === 'formName') {
-      this.setState({ formName: value });
-    }
+    this.setState({ name: value });
 
     this.props.queryActions.onChange(value, type);
   }
   handleOnSearch() {
-    this.props.queryActions.goodSearch({}, 'https://us-central1-weather-e382e.cloudfunctions.net/searchDataTest', 'GET');
+    const body = {
+      name: this.state.name,
+    };
+    this.props.queryActions.goodSearch(body, 'http://www.silvereye.work/api/plant/search', 'POST');
   }
 
   createTableBodyRows() {
@@ -47,13 +47,16 @@ class GoodSearch extends Component {
         key={index}
       >
         <TableRowColumn>
-          {row.goodName}
+          {row.name}
         </TableRowColumn>
         <TableRowColumn>
-          {row.familyName}
+          {row.family}
         </TableRowColumn>
         <TableRowColumn>
-          {row.formName}
+          {row.form}
+        </TableRowColumn>
+        <TableRowColumn>
+          {row.path}
         </TableRowColumn>
       </TableRow>,
       );
@@ -67,16 +70,10 @@ class GoodSearch extends Component {
       <div className={css.body}>
         <div>
           <TextField
-            hintText={'Family Name'}
-            floatingLabelText={'科名'}
-            value={this.state.familyName}
-            onChange={(value, nextValue) => this.handleOnChange(nextValue, 'familyName')}
-          />
-          <TextField
-            hintText={'Form Name'}
-            floatingLabelText={'形態'}
-            value={this.state.formName}
-            onChange={(value, nextValue) => this.handleOnChange(nextValue, 'formName')}
+            hintText={'Plant Name'}
+            floatingLabelText={'植物名'}
+            value={this.state.name}
+            onChange={(value, nextValue) => this.handleOnChange(nextValue, 'name')}
           />
 
         </div>
@@ -102,6 +99,9 @@ class GoodSearch extends Component {
                 </TableHeaderColumn>
                 <TableHeaderColumn>
                   形態
+                </TableHeaderColumn>
+                <TableHeaderColumn>
+                  パス
                 </TableHeaderColumn>
               </TableRow>
             </TableHeader>
